@@ -1,0 +1,43 @@
+C:\Users\Владислав>pip freeze
+
+C:\Users\Владислав>
+C:\Users\Владислав>pip install pillow
+Collecting pillow
+  Using cached Pillow-8.4.0-cp39-cp39-win_amd64.whl (3.2 MB)
+Installing collected packages: pillow
+Successfully installed pillow-8.4.0
+
+C:\Users\Владислав>pip show pillow
+Name: Pillow
+Version: 8.4.0
+Summary: Python Imaging Library (Fork)
+Home-page: https://python-pillow.org
+Author: Alex Clark (PIL Fork Author)
+Author-email: aclark@python-pillow.org
+License: HPND
+Location: c:\users\владислав\appdata\local\packages\pythonsoftwarefoundation.python.3.9_qbz5n2kfra8p0\localcache\local-packages\python39\site-packages
+Requires:
+Required-by:
+
+C:\Users\Владислав>
+C:\Users\Владислав>python -m venv virt
+
+C:\Users\Владислав>"virt/Scripts/activate.bat
+
+(virt) C:\Users\Владислав>
+(virt) C:\Users\Владислав>pip show pillow
+WARNING: Package(s) not found: pillow
+
+(virt) C:\Users\Владислав>
+(virt) C:\Users\Владислав>pip install pillow==8.0.0
+Collecting pillow==8.0.0
+  Using cached Pillow-8.0.0-cp39-cp39-win_amd64.whl (2.1 MB)
+Installing collected packages: pillow
+Successfully installed pillow-8.0.0
+
+(virt) C:\Users\Владислав>
+(virt) C:\Users\Владислав>deactivate
+C:\Users\Владислав>pip freeze
+Pillow==8.4.0
+
+C:\Users\Владислав>
