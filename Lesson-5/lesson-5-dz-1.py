@@ -4,12 +4,7 @@ def odd_num(count):
 
 
 odd_num_gen = odd_num(15)
-print(next(odd_num_gen, 'StopIteration'))
-print(next(odd_num_gen, 'StopIteration'))
-print(next(odd_num_gen, 'StopIteration'))
-print(next(odd_num_gen, 'StopIteration'))
-print(next(odd_num_gen, 'StopIteration'))
-print(next(odd_num_gen, 'StopIteration'))
-print(next(odd_num_gen, 'StopIteration'))
-print(next(odd_num_gen, 'StopIteration'))
-print(next(odd_num_gen, 'StopIteration'))
+result = str()
+while result != 'StopIteration':
+    result = next(odd_num_gen, 'StopIteration')
+    print(result)
