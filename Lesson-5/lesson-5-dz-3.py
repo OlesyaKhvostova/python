@@ -16,7 +16,7 @@ klasses = [
 ]
 
 info_class_gen = info_gen(tutors,klasses)
-
+print(type(info_class_gen))
 result = str()
 while result != 'StopIteration':
     result = next(info_class_gen, 'StopIteration')
