@@ -39,5 +39,3 @@ def get_params_form_file(users_dict, req_params):
 get_params_form_file(users_dict, req_params)
 print(find_spamer(users_dict))
 print(users_dict)
-
-
