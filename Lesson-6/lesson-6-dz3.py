@@ -9,7 +9,7 @@ def init_files(user_file_name, hobby_file_name):
     user_file.write('Серегин,Сергей,Иванович\n')
     user_file.write('Александров,Саня,Петрович\n')
     user_file.write('Атласов,Эдурад,Антонович\n')
-    #user_file.write('Антон,Алексей,Сергеич\n')
+    user_file.write('Антон,Алексей,Сергеич\n')
     user_file.close()
 
     hobby_file = open(hobby_file_name, 'w', encoding='utf-8')
