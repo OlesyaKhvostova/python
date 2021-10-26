@@ -10,5 +10,7 @@ def create_folders(parent_obj, child):
             os.makedirs(folder_base)
         create_folders(folder_base,value)
 
+with open('config.yaml','w',encoding='utf-8') as config_file:
+    config_file.write(str(project_struct))
 
 create_folders('',project_struct)
