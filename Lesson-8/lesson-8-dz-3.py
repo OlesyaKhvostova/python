@@ -1,7 +1,10 @@
 def log_type_param(func):
     def wraper(*args):
+        out_set = ''
         for value in args:
-            print(type(value))
+            out_set += f'{value} : {str(type(value))}'
+
+        print(f'{func.__name__}({out_set})')
         func(*args)
     return wraper
 
