@@ -1,6 +1,7 @@
 import re
 
-email_re = re.compile(r'(\w+)@(\w+.\w{2,6})')
+#email_re = re.compile(r'(\w+)@(\w+.\w{2,6})')
+email_re = re.compile(r'(^[\w]+)[@]{1}([\w]+[\.]{1}[\w]{2,6}$)')
 
 def get_email_data(email_val):
 
