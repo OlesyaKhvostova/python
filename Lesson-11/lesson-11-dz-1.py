@@ -8,7 +8,7 @@ class MyDate:
         values_lst = list(mydate.value.split('-'))
         output_prms = {'day':1,'month':1,'year':2000}
 
-        if (len(values_lst) == 3):
+        if len(values_lst) == 3:
             temp = list(map(int, values_lst))
             output_prms['day'] = temp[0]
             output_prms['month'] = temp[1]
@@ -17,7 +17,7 @@ class MyDate:
             print(f'{mydate.value} неправльные параметры даты')
             return {}
 
-        if (MyDate.check_params(output_prms)):
+        if MyDate.check_params(output_prms):
             return output_prms
         else:
             print(f'{mydate.value} неправльные параметры даты')
@@ -26,13 +26,13 @@ class MyDate:
 
     @staticmethod
     def check_params(params):
-        if (params['day'] < 1 or params['day'] > 31):
+        if params['day'] < 1 or params['day'] > 31:
             return False
 
-        if (params['month'] < 1 or params['month'] > 12):
+        if params['month'] < 1 or params['month'] > 12:
             return False
 
-        if (params['year'] < 1):
+        if params['year'] < 1:
             return False
 
         return True
