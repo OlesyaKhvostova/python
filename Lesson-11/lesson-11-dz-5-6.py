@@ -2,6 +2,29 @@ import uuid
 import random
 import copy
 
+def param_validator(func):
+    def func_wrapper(*args):
+        _, sub_div_name, params = args
+        key_valid = [Printer.__name__, Scaner.__name__, Xerox.__name__]
+        execute_func = True
+
+        for key, val in params.items():
+            if not any([key == obj for obj in key_valid]):
+               print(f'Неправильный тип устроства {key}')
+               execute_func = False
+               break
+            else:
+                if not isinstance(val, int):
+                    print(f'Неправильный тип данных {val}')
+                    execute_func = False
+
+        if execute_func:
+            return func(*args)
+        else:
+            return None
+    return func_wrapper
+
+
 class EquipWarehouse:
     eq_base = {'Printer': [], 'Scaner': [], 'Xerox': []}
     def __init__(self):
@@ -44,20 +67,21 @@ Cканеров = {len(self.warehouse[Scaner.__name__])} шт\n \
         return f'************\n'.join(map(str,[obj for obj in self.warehouse[Xerox.__name__]]))
 
     def get_subdiv_info(self, subdiv_name):
-        subdiv_use = self.subdivs_eq[subdiv_name]
-        return f'{subdiv_name} использует:\n' + f'\n'.join([f'{key} = {len(subdiv_use[key])}' for key in subdiv_use.keys()]) + '\n'
+        if subdiv_name in self.subdivs_eq:
+            subdiv_use = self.subdivs_eq[subdiv_name]
+            return f'{subdiv_name} использует:\n' + f'\n'.join([f'{key} = {len(subdiv_use[key])}' for key in subdiv_use.keys()]) + '\n'
+        else:
+            return None
+
 
     def add_equip_to_warhouse(self, obj_type, object):
         self.warehouse[obj_type].append(object)
 
 
     """Формат словаря {'Printer': count, 'Scaner': count, 'Xerox': count}"""
+    @param_validator
     def add_eqp_to_subdiv(self, sub_div_name, params: dict()):
         for key, val in params.items():
-            if not (key == Printer.__name__ or key == Scaner.__name__ or key == Xerox.__name__):
-                print('Неправильный тип устроства')
-                continue
-
             for index in range(val):
                 obj = self.warehouse[key].pop()
                 if not sub_div_name in self.subdivs_eq:
