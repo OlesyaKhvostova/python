@@ -22,7 +22,6 @@ def variant_second(value: str) -> int:
 
 
 input_data = input('введите вещественное число\n')
-#input_data_float = float(input_data)
 
 print(f'Сумма {variant_one(input_data)} вариант 1\n')
 print(f'Сумма {variant_second(input_data)} вариант 2\n')
