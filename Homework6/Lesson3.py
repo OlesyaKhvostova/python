@@ -43,12 +43,8 @@ def check_win():
     #win_dict = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
     check_sign = 'x' if current_player == 1 else 'o'
     for value in win_dict:
-        win_cell_count = 0
-        for cell in value:
-            if game_field[index_dict[cell][0]][index_dict[cell][1]] == check_sign:
-                win_cell_count += 1
-
-        if win_cell_count == 3:
+        list_data = list(filter(lambda cell:game_field[index_dict[cell][0]][index_dict[cell][1]] == check_sign, value))
+        if len(list_data) == 3:
             return True
 
     return False
@@ -73,11 +69,8 @@ def enter_ai():
     print('Выбирает Бот...\n')
     time.sleep(2)
 
-    correct = False
-    while not correct:
-        cell_index = random.randint(1, 9)
-        if check_cell(cell_index):
-            correct = True
+    valid_cell = list(filter(check_cell, [i for i in range(1,10)]))
+    cell_index = random.randint(0, len(valid_cell))
 
     print(f'Бот выбрал {cell_index} ячейку\n')
     return cell_index
@@ -87,12 +80,11 @@ def play():
     has_winner = False
     while not has_winner:
         cell_index = -1
-        if game_regime == 1:
+
+        if game_regime == 1 or current_player == 2:
             cell_index = enter_player()
         elif current_player == 1:
             cell_index = enter_ai()
-        elif current_player == 2:
-            cell_index = enter_player()
 
         set_cell(cell_index, current_player)
 
@@ -100,11 +92,8 @@ def play():
         if has_winner:
             print(f'Игрок {current_player} выиграл, Поздравляем!!!\n')
         else:
-            find_empty = False
-            for i in range(1,10):
-                if check_cell(i):
-                    find_empty = True
-            if find_empty:
+            valid_cell = list(filter(check_cell, [i for i in range(1, 10)]))
+            if len(valid_cell):
                 current_player = 2 if current_player == 1 else 1
                 print(f'Играем дальше\n')
             else:
