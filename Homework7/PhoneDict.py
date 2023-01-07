@@ -1,4 +1,6 @@
 import os
+from prettytable import PrettyTable
+
 last_id = 0
 main_dict = {}
 
@@ -23,14 +25,21 @@ def menu():
             import_dict(file_name)
 
 def show_dict():
-    print("  Id  #     Имя     #   Фамилия   #   Номер    # Комментарий ")
-    print('-------------------------------------------------------')
+    dict_table = PrettyTable()
+    dict_table.field_names = ['Id', 'Имя', 'Фамилия', 'Номер', 'Комментарий']
+
+    #print("  Id  #     Имя     #   Фамилия   #   Номер    # Комментарий ")
+    #print('-------------------------------------------------------')
 
     for key, value in main_dict.items():
-        data = str(key) + ' #'
-        data += ' # '.join(value) + '\n'
-        data += '-------------------------------------------------------\n'
-        print(data)
+        list_data = [str(key)]
+        list_data.extend([x for x in value])
+        dict_table.add_row(list_data)
+        #data =  + ' #'
+        #data += ' # '.join(value) + '\n'
+        #data += '-------------------------------------------------------\n'
+        #print(dict_table)
+    print(dict_table)
 
 def request_user_data():
     name = input('Введите имя:\n')
