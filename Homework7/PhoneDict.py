@@ -28,17 +28,11 @@ def show_dict():
     dict_table = PrettyTable()
     dict_table.field_names = ['Id', 'Имя', 'Фамилия', 'Номер', 'Комментарий']
 
-    #print("  Id  #     Имя     #   Фамилия   #   Номер    # Комментарий ")
-    #print('-------------------------------------------------------')
-
     for key, value in main_dict.items():
         list_data = [str(key)]
         list_data.extend([x for x in value])
         dict_table.add_row(list_data)
-        #data =  + ' #'
-        #data += ' # '.join(value) + '\n'
-        #data += '-------------------------------------------------------\n'
-        #print(dict_table)
+
     print(dict_table)
 
 def request_user_data():
@@ -95,7 +89,6 @@ def write_csv_format(main_dict, dict_file):
 
 def is_ext(file_name, ext):
     file_data = file_name.split('.')
-    print(file_data, ext)
     return file_data[1] == ext
 
 def import_dict(file_name):
@@ -105,7 +98,6 @@ def import_dict(file_name):
 
     dict_file = open(file_name, 'r+')
     if is_ext(file_name,'txt'):
-        print(main_dict)
         read_txt_format(main_dict, dict_file)
     elif is_ext(file_name,'csv'):
         read_csv_format(main_dict, dict_file)
