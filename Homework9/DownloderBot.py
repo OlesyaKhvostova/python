@@ -22,12 +22,12 @@ def Download(link, output_path,video):
 
     print(output_filename)
     if not video:
-
         rename_file_to_mp3(output_filename)
 
 def run():
     output_path = input("Введите путь для сохранения:\n")
-    video = bool(input("Введите 1 - для Видео 0 - только звук\n"))
+    video = int(input("Введите 1 - для Видео 0 - только звук\n"))
+    print(video)
     link = input("Введите ссылку на ютуб URL: \n")
     Download(link, output_path, video)
 
